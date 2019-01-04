@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <div>
+    <div *ngFor="let cookie of cookies" class="card bg-light">
+      <div class="card-header bg-warning">
+        <i class="fa fa-cookie-bite"></i>
+        Cookie
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">Flavour - {{cookie.flavour}}</h5>
+      </div>
+    </div>
+  </div>
+</div>
