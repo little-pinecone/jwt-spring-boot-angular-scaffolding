@@ -5,6 +5,8 @@ import in.keepgrowing.jwtspringbootangularscaffolding.user.model.UserRepository;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -27,4 +29,9 @@ public class UserService {
                 .setPassword(encoder.encode(user.getUserCredentials().getPassword()));
         user.getUserCredentials().setRole(DEFAULT_ROLE);
     }
+
+    public Optional<User> findByUsername(String username) {
+        return userRepository.findByUserCredentialsUsername(username);
+    }
+
 }

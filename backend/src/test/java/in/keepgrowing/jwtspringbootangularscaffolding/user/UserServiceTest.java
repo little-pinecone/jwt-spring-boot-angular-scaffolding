@@ -10,6 +10,8 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.util.Optional;
+
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -34,6 +36,16 @@ public class UserServiceTest {
         userService.register(user);
 
         verify(userRepository, times(1)).save(user);
+    }
+
+    @Test
+    public void findByUsername() {
+        User user = createTestUser();
+        when(userRepository.findByUserCredentialsUsername("user"))
+                .thenReturn(Optional.of(user));
+        userService.findByUsername("user");
+
+        verify(userRepository, times(1)).findByUserCredentialsUsername("user");
     }
 
     private User createTestUser() {
