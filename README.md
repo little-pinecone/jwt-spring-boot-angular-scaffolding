@@ -3,9 +3,8 @@
 ![keep growing logo](readme-images/logo_250x60.png)
 
 This project is a multi-module application, using Spring Boot for the backend and Angular for the frontend. The project can be built into a single jar file using Maven. You can also run the modules separately during development.
-To learn how to set up a project like this one, check out the [Integrate Angular with a Spring Boot project](http://keepgrowing.in/java/springboot/integrate-angular-with-a-spring-boot-project/) post.
 
-It's ready to be secured with JSON Web Token.
+The backend is secured with JSON Web Token. The frontend is ready to be secured.
 
 ## Getting Started
 
@@ -19,41 +18,22 @@ You can build the application with:
 $ mvn clean install
 ```
 
-### Registering a test user
+### Sign up request
 
-POST endpoint:
+![sign up request screenshot](readme-images/postman-sign-up-request.png)
 
-```bash
-http://localhost:8080/api/users
-```
-Body:
+### Login request
 
-```json
-{
-    "userCredentials": {
-        "username": "user",
-        "password": "test"
-    }
-}
-```
+![login request screenshot](readme-images/postman-login-request.png)
 
-### Running in production
+### Requesting secured data
 
-Set up the `apiUrl` const in `frontend/src/main/angular/src/environments/environment.prod.ts`.
-
-## Built With
-
-* Java 11
-* [Spring Boot 2.1.1](https://start.spring.io/)
-* [Angular 7](https://angular.io/)
-* [Bootstrap 4](https://getbootstrap.com/)
-* [Maven](https://maven.apache.org/)
-* [frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin)
+![secured API call screenshot](readme-images/postman-successful-call-to-the-secured-endpoint.png)
 
 ## Overview and technical features
 
 The project currently serves a dummy login page and hard-coded pastry data returned from the API.
-It allows registering new users.
+It allows registering new users, handles login requests and serves data from the API to authenticated and authorized users.
 
 ## Running tests
 
@@ -66,6 +46,19 @@ Run all frontend tests with the following command in the `frontend/src/main/angu
 $ ng test
 ```
 
+## Running in production
+
+Set up the `apiUrl` const in `frontend/src/main/angular/src/environments/environment.prod.ts`.
+
+## Built With
+
+* Java 11
+* [Spring Boot 2.1.1](https://start.spring.io/)
+* [Angular 7](https://angular.io/)
+* [Bootstrap 4](https://getbootstrap.com/)
+* [Maven](https://maven.apache.org/)
+* [frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin)
+
 ## Screenshots
 
 ![login page](readme-images/login-page-screenshot.png)
@@ -73,7 +66,7 @@ $ ng test
 
 ## To do
 
-* Authorisation and authentication - securing backend and frontend layers, handling logging in and logging out.
+* Authorisation and authentication - securing frontend layer (handling logging in and logging out).
 
 ## License
 
