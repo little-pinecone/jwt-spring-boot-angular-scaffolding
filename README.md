@@ -19,6 +19,28 @@ You can build the application with:
 $ mvn clean install
 ```
 
+### Registering a test user
+
+POST endpoint:
+
+```bash
+http://localhost:8080/api/users
+```
+Body:
+
+```json
+{
+    "userCredentials": {
+        "username": "user",
+        "password": "test"
+    }
+}
+```
+
+### Running in production
+
+Set up the `apiUrl` const in `frontend/src/main/angular/src/environments/environment.prod.ts`.
+
 ## Built With
 
 * Java 11
@@ -31,6 +53,7 @@ $ mvn clean install
 ## Overview and technical features
 
 The project currently serves a dummy login page and hard-coded pastry data returned from the API.
+It allows registering new users.
 
 ## Running tests
 
