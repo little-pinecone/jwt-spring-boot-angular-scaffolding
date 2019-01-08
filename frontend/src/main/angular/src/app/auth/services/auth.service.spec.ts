@@ -41,4 +41,14 @@ describe('AuthService', () => {
     service.login(new Credentials('',''));
     expect(tokenService.getResponseHeaders).toHaveBeenCalled();
   });
+
+  it('should return false from isLoggedIn() method by default', () => {
+    expect(service.isLoggedIn()).toEqual(false);
+  });
+
+  it('should return false from isLoggedIn() method when user is logged out', () => {
+    spyOn(tokenService, 'logout').and.returnValue(new Observable<string>());
+    service.logout();
+    expect(service.isLoggedIn()).toEqual(false);
+  });
 });

@@ -21,4 +21,9 @@ export class TokenService {
     let loginUrl = API_URL + '/login';
     return this.http.post(loginUrl, credentials, httpOptions);
   }
+
+  public logout() {
+    let logoutUrl = API_URL + '/logout';
+    return this.http.get(logoutUrl, {responseType: 'text'});
+  }
 }

@@ -1,3 +1,11 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-info">
   <a routerLink="/cookies" class="navbar-brand">Cookie dispenser</a>
+  <a routerLink="" class="text-white" [ngClass]="{'hidden': !authService.isLoggedIn() }"
+    (click)="logout()">
+    <span class="ml-1">Log out</span>
+  </a>
+  <a routerLink="/login" class="text-white" [ngClass]="{'hidden': authService.isLoggedIn() }"
+  routerLinkActive="active">
+    <span class="ml-1">Log in</span>
+  </a>
 </nav>

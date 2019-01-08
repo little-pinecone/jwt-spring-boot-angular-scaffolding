@@ -51,4 +51,12 @@ describe('TokenService', () => {
     expect(req.request.method).toBe("POST");
     req.flush({}, HttpResponseMock);
   });
+
+  it('should call logout endpoint', () => {
+    service.logout().subscribe(() => {});
+
+    const req = httpMock.expectOne(apiUrl + '/logout');
+    expect(req.request.method).toBe("GET");
+    req.flush("");
+  });
 });
