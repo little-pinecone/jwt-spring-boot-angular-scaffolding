@@ -4,7 +4,7 @@
 
 This project is a multi-module application, using Spring Boot for the backend and Angular for the frontend. The project can be built into a single jar file using Maven. You can also run the modules separately during development.
 
-The backend is secured with JSON Web Token. The frontend is ready to be secured.
+The backend and frontend is secured with JSON Web Token.
 
 ## Getting Started
 
@@ -20,19 +20,13 @@ $ mvn clean install
 
 ### Sign up request
 
+You need to create a test user:
+
 ![sign up request screenshot](readme-images/postman-sign-up-request.png)
-
-### Login request
-
-![login request screenshot](readme-images/postman-login-request.png)
-
-### Requesting secured data
-
-![secured API call screenshot](readme-images/postman-successful-call-to-the-secured-endpoint.png)
 
 ## Overview and technical features
 
-The project currently serves a dummy login page and hard-coded pastry data returned from the API.
+The project currently serves a login page and hard-coded pastry data returned from the API.
 It allows registering new users, handles login requests and serves data from the API to authenticated and authorized users.
 
 ## Running tests
@@ -48,7 +42,7 @@ $ ng test
 
 ## Running in production
 
-Set up the `apiUrl` const in `frontend/src/main/angular/src/environments/environment.prod.ts`.
+Set the `apiUrl` const in `frontend/src/main/angular/src/environments/environment.prod.ts` to the path for the production environment.
 
 ## Built With
 
@@ -66,7 +60,7 @@ Set up the `apiUrl` const in `frontend/src/main/angular/src/environments/environ
 
 ## To do
 
-* Authorisation and authentication - securing frontend layer (handling logging in and logging out).
+* Implement AuthGuard
 
 ## License
 
