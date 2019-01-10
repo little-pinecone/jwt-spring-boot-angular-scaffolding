@@ -26,8 +26,10 @@ You need to create a test user:
 
 ## Overview and technical features
 
-The project currently serves a login page and hard-coded pastry data returned from the API.
-It allows registering new users, handles login requests and serves data from the API to authenticated and authorized users.
+* The project currently serves a login page and hard-coded pastry data returned from the API.
+* It allows registering new users, handles login requests.
+* It serves data from the API to authenticated and authorized users.
+* The user experience is enhanced thanks to the AuthGuard implementation.
 
 ## Running tests
 
@@ -57,10 +59,6 @@ Set the `apiUrl` const in `frontend/src/main/angular/src/environments/environmen
 
 ![login page](readme-images/login-page-screenshot.png)
 ![cookies](readme-images/cookie-dispenser-screenshot.png)
-
-## To do
-
-* Implement AuthGuard
 
 ## License
 
