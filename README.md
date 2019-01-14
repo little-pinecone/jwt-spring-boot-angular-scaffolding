@@ -46,6 +46,8 @@ $ ng test
 
 Set the `apiUrl` const in `frontend/src/main/angular/src/environments/environment.prod.ts` to the path for the production environment.
 
+Override the default `TokenProperties` values. E.g. to override the expiration time of tokens you can add `security.jwt.expiration=your_value` to the `application.properties` file.
+
 ## Built With
 
 * Java 11
