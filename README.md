@@ -4,7 +4,13 @@
 
 This project is a multi-module application, using Spring Boot for the backend and Angular for the frontend. The project can be built into a single jar file using Maven. You can also run the modules separately during development.
 
-The backend and frontend is secured with JSON Web Token.
+The backend and frontend are secured with JSON Web Token.
+
+To learn how to set up a project like this one, check out the following posts:
+
+* [Securing your Spring Boot and Angular app with JWT #1 – Introduction](https://keepgrowing.in/java/springboot/securing-your-spring-boot-and-angular-app-with-jwt-1-introduction/)
+* [Securing your Spring Boot and Angular app with JWT #2 – Backend](https://keepgrowing.in/java/springboot/securing-your-spring-boot-and-angular-app-with-jwt-2-backend/)
+* [Securing your Spring Boot and Angular app with JWT #3 – Frontend](https://keepgrowing.in/angular/securing-your-spring-boot-and-angular-app-with-jwt-3-frontend/)
 
 ## Getting Started
 
