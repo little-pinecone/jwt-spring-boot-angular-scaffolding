@@ -30,6 +30,19 @@ You need to create a test user:
 
 ![sign up request screenshot](readme-images/postman-sign-up-request.png)
 
+* path: ```http://localhost:8080/api/users```
+
+* body:
+
+```json
+{
+    "userCredentials": {
+        "username": "user",
+        "password": "test"
+    }
+}
+```
+
 ## Overview and technical features
 
 * The project currently serves a login page and hard-coded pastry data returned from the API.
@@ -57,11 +70,13 @@ Override the default `TokenProperties` values. E.g. to override the expiration t
 ## Built With
 
 * Java 11
-* [Spring Boot 2.1.1](https://start.spring.io/)
-* [Angular 7](https://angular.io/)
+* [Spring Boot 2.1.5](https://start.spring.io/)
+* [Angular 8](https://angular.io/)
 * [Bootstrap 4](https://getbootstrap.com/)
 * [Maven](https://maven.apache.org/)
 * [frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin)
+* [npm 6.9.0](https://github.com/npm/cli)
+* [Node.js v10.16.0](https://nodejs.org/dist/latest-v10.x/docs/api/)
 
 ## Screenshots
 

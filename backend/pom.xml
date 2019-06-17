@@ -5,7 +5,7 @@
     <parent>
         <groupId>in.keepgrowing</groupId>
         <artifactId>jwt-spring-boot-angular-scaffolding</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.2.0.SNAPHOT</version>
     </parent>
     <artifactId>backend</artifactId>
     <name>backend</name>
