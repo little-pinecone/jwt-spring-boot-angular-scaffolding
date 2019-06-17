@@ -5,12 +5,12 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.1.1.RELEASE</version>
+		<version>2.1.5.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>in.keepgrowing</groupId>
 	<artifactId>jwt-spring-boot-angular-scaffolding</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.2.0.SNAPHOT</version>
 	<name>jwt-spring-boot-angular-scaffolding</name>
 	<description>A Spring Boot app secured with JWT and using Angular on the front-end</description>
 	<packaging>pom</packaging>
