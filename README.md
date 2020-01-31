@@ -75,8 +75,8 @@ Override the default `TokenProperties` values. E.g. to override the expiration t
 * [Bootstrap 4](https://getbootstrap.com/)
 * [Maven](https://maven.apache.org/)
 * [frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin)
-* [npm 6.9.0](https://github.com/npm/cli)
-* [Node.js v10.16.0](https://nodejs.org/dist/latest-v10.x/docs/api/)
+* [npm 6.13.7](https://github.com/npm/cli)
+* [Node.js v12.14.1](https://nodejs.org/dist/latest-v10.x/docs/api/)
 
 ## Screenshots
 

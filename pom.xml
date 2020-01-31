@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>in.keepgrowing</groupId>
 	<artifactId>jwt-spring-boot-angular-scaffolding</artifactId>
-	<version>1.2.0.SNAPHOT</version>
+	<version>1.2.1.SNAPHOT</version>
 	<name>jwt-spring-boot-angular-scaffolding</name>
 	<description>A Spring Boot app secured with JWT and using Angular on the front-end</description>
 	<packaging>pom</packaging>
