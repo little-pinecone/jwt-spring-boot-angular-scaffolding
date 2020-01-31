@@ -6,6 +6,7 @@ import { AuthService } from './auth.service';
 import { TokenService } from './token.service';
 import { Credentials } from '../credentials';
 import { Observable } from 'rxjs';
+import {HttpResponse} from "@angular/common/http";
 
 describe('AuthService', () => {
   let injector: TestBed;
@@ -37,7 +38,7 @@ describe('AuthService', () => {
   });
 
   it('should call token service for ResponseHeaders when logging in a user', () => {
-    spyOn(tokenService, 'getResponseHeaders').and.returnValue(new Observable<string>());
+    spyOn(tokenService, 'getResponseHeaders').and.returnValue(new Observable<HttpResponse<Object>>());
     service.login(new Credentials('',''));
     expect(tokenService.getResponseHeaders).toHaveBeenCalled();
   });
