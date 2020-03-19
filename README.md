@@ -71,7 +71,7 @@ Override the default `TokenProperties` values. E.g. to override the expiration t
 
 * Java 11
 * [Spring Boot 2.1.5](https://start.spring.io/)
-* [Angular 8](https://angular.io/)
+* [Angular 9](https://angular.io/)
 * [Bootstrap 4](https://getbootstrap.com/)
 * [Maven](https://maven.apache.org/)
 * [frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin)

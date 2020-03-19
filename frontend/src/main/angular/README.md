@@ -1,6 +1,7 @@
 # Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
+It has been updated to Angular 9.
 
 ## Development server
 
