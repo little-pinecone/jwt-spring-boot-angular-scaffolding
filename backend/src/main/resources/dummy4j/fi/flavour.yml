@@ -1,0 +1,30 @@
+fi:
+  flavour:
+    chocolate: [
+      "valkoinen suklaa", "tumma suklaa", "suklaa"
+    ]
+    nutty: [
+      "hasselpähkinä", "manteli", "pekaanipähkinä", "kookos", "nougat"
+    ]
+    spicy: [
+      "kurpitsamauste", "kaneli", "matcha", "minttu", "hunaja", "vanilja", "inkivääri", "mokka", "tuhehdus", "vaahtera", "karamelli",
+      "toffee", "maapähkinävoi"
+    ]
+    fruit: [
+      "sitruuna", "vadelma", "karpalo", "oranssi", "banaani"
+    ]
+    single: [
+      "#{flavour.chocolate}", "#{flavour.nutty}", "#{flavour.spicy}", "#{flavour.fruit}"
+    ]
+    double: [
+      "#{flavour.chocolate} and #{flavour.nutty}",
+      "#{flavour.chocolate} and #{flavour.spicy}",
+      "#{flavour.chocolate} and #{flavour.fruit}",
+      "#{flavour.fruit} and #{flavour.spicy}",
+      "#{flavour.fruit} and #{flavour.nutty}",
+      "#{flavour.spicy} and #{flavour.nutty}",
+    ]
+    mixed: [
+      "#{flavour.single}",
+      "#{flavour.double}"
+    ]

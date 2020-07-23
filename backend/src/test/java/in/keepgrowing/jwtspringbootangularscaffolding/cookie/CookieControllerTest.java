@@ -1,6 +1,9 @@
 package in.keepgrowing.jwtspringbootangularscaffolding.cookie;
 
+import dev.codesoapbox.dummy4j.Dummy4j;
 import in.keepgrowing.jwtspringbootangularscaffolding.config.SecurityConfig;
+import in.keepgrowing.jwtspringbootangularscaffolding.dataprovider.CookieJar;
+import in.keepgrowing.jwtspringbootangularscaffolding.dataprovider.dummyprovider.RandomCookieJar;
 import in.keepgrowing.jwtspringbootangularscaffolding.security.CustomUserDetailsService;
 import in.keepgrowing.jwtspringbootangularscaffolding.security.TokenProperties;
 import in.keepgrowing.jwtspringbootangularscaffolding.user.UserService;
@@ -17,13 +20,15 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(value = CookieController.class)
-@Import({TokenProperties.class, BCryptPasswordEncoder.class, CustomUserDetailsService.class, SecurityConfig.class})
+@Import({TokenProperties.class, BCryptPasswordEncoder.class, CustomUserDetailsService.class, SecurityConfig.class,
+        RandomCookieJar.class, Dummy4j.class})
 public class CookieControllerTest {
 
     @Autowired
@@ -32,13 +37,16 @@ public class CookieControllerTest {
     @MockBean
     private UserService userService;
 
+    @Autowired
+    private CookieJar cookieJar;
+
     @Test
     @WithMockUser(roles = "USER")
     public void getsCookies() throws Exception {
+
         mvc.perform(get("/api/cookies")
                 .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.[0].flavour", is("chocolate")))
-                .andExpect(jsonPath("$.[1].flavour", is("vanilla")))
+                .andExpect(jsonPath("$.[0]", is(notNullValue())))
                 .andExpect(status().isOk());
     }
 
