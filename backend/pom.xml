@@ -11,6 +11,10 @@
     <name>backend</name>
     <description>The backend module built with Spring Boot</description>
 
+    <properties>
+        <jacoco.version>0.8.5</jacoco.version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -66,5 +70,51 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <!-- Code coverage report generation -->
+        <profile>
+            <id>code-coverage</id>
+            <properties>
+                <env>test</env>
+                <gebEnv>test</gebEnv>
+                <jacoco.skip>false</jacoco.skip>
+                <maven.test.skip>false</maven.test.skip>
+                <skip.unit.tests>false</skip.unit.tests>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>${jacoco.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>prepare-agent</goal>
+                                </goals>
+                            </execution>
+                            <execution>
+                                <id>report</id>
+                                <phase>post-integration-test</phase>
+                                <goals>
+                                    <goal>report</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+            <reporting>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>${jacoco.version}</version>
+                    </plugin>
+                </plugins>
+            </reporting>
+        </profile>
+    </profiles>
 
 </project>
