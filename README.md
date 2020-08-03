@@ -11,6 +11,7 @@ To learn how to set up a project like this one, check out the following posts:
 * [Securing your Spring Boot and Angular app with JWT #1 – Introduction](https://keepgrowing.in/java/springboot/securing-your-spring-boot-and-angular-app-with-jwt-1-introduction/)
 * [Securing your Spring Boot and Angular app with JWT #2 – Backend](https://keepgrowing.in/java/springboot/securing-your-spring-boot-and-angular-app-with-jwt-2-backend/)
 * [Securing your Spring Boot and Angular app with JWT #3 – Frontend](https://keepgrowing.in/angular/securing-your-spring-boot-and-angular-app-with-jwt-3-frontend/)
+* [Fix “Invalid CSRF token” error – add the XSRF-TOKEN header in Angular](https://keepgrowing.in/angular/fix-invalid-csrf-token-error-add-the-xsrf-token-header-in-angular/) (when you enable csrf protection in `SecurityConfig::configure`)
 
 ## Getting Started
 
@@ -42,6 +43,21 @@ You need to create a test user:
     }
 }
 ```
+
+#### Add CSRF token to requests from Postman
+
+* Copy this code to the `Tests` tab for the mutable requests:
+
+```
+var xsrfCookie = postman.getResponseCookie("XSRF-TOKEN");
+pm.globals.set('csrftoken', xsrfCookie.value);
+```
+
+![add csrf to postman screenshot](readme-images/postman-tests-with-csrf.png)
+
+* Add the `X-XSRF-TOKEN` header that will use the `{{csrftoken}}` variable:
+
+![add csrf to postman screenshot](readme-images/postman-add-header.png)
 
 ## Overview and technical features
 
