@@ -21,7 +21,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) {
         return userService.findByUsername(username)
                 .map(this::getUserDetails)
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("Username: %s not found", username)));

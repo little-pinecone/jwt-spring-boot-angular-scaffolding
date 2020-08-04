@@ -16,8 +16,12 @@ public class Cookie {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Cookie cookie = (Cookie) o;
         return Objects.equals(flavour, cookie.flavour);
     }

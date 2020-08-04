@@ -7,7 +7,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -16,6 +15,7 @@ import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.time.Clock;
 import java.util.Collections;
 import java.util.Date;
@@ -43,8 +43,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     }
 
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
-            throws AuthenticationException {
+    public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) {
         try {
             UserCredentials credentials = getCredentials(request);
             UsernamePasswordAuthenticationToken token = createAuthenticationToken(credentials);
@@ -84,7 +83,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
                 .claim("authorities", authorities)
                 .setIssuedAt(new Date(now))
                 .setExpiration(new Date(now + tokenProperties.getExpiration() * 1000))
-                .signWith(SignatureAlgorithm.HS512, tokenProperties.getSecret().getBytes())
+                .signWith(SignatureAlgorithm.HS512, tokenProperties.getSecret().getBytes(Charset.defaultCharset()))
                 .compact();
     }
 }
