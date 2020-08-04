@@ -1,5 +1,6 @@
 package in.keepgrowing.jwtspringbootangularscaffolding.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import in.keepgrowing.jwtspringbootangularscaffolding.security.AuthenticationFilter;
 import in.keepgrowing.jwtspringbootangularscaffolding.security.AuthorizationFilter;
 import in.keepgrowing.jwtspringbootangularscaffolding.security.CustomUserDetailsService;
@@ -17,23 +18,26 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 import javax.servlet.http.HttpServletResponse;
+import java.time.Clock;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Value("${cors.enabled:false}")
-    private boolean corsEnabled;
-
     private final TokenProperties tokenProperties;
     private final BCryptPasswordEncoder passwordEncoder;
     private final CustomUserDetailsService userDetailsService;
+    private final ObjectMapper objectMapper;
+    @Value("${cors.enabled:false}")
+    private boolean corsEnabled;
 
     public SecurityConfig(TokenProperties tokenProperties,
                           BCryptPasswordEncoder passwordEncoder,
-                          CustomUserDetailsService userDetailsService) {
+                          CustomUserDetailsService userDetailsService,
+                          ObjectMapper objectMapper) {
         this.tokenProperties = tokenProperties;
         this.passwordEncoder = passwordEncoder;
         this.userDetailsService = userDetailsService;
+        this.objectMapper = objectMapper;
     }
 
     @Override
@@ -47,7 +51,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .and()
-                .addFilter(new AuthenticationFilter(authenticationManagerBean(), tokenProperties))
+                .addFilter(new AuthenticationFilter(authenticationManagerBean(), tokenProperties,
+                        objectMapper, Clock.systemDefaultZone()))
                 .addFilterAfter(new AuthorizationFilter(tokenProperties), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, tokenProperties.getLoginPath()).permitAll()
