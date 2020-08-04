@@ -79,15 +79,16 @@ $ ng test
 
 ## Running in production
 
-Set the `apiUrl` const in `frontend/src/main/angular/src/environments/environment.prod.ts` to the path for the production environment.
+Set the `target` url in `frontend/src/main/angular/src/proxy.conf.json` to the path for the right environment.
+Add the `"changeOrigin": true` option if your backend is not running on `localhost` ([Angular proxy documentation](https://angular.io/guide/build#proxying-to-a-backend-server)). 
 
 Override the default `TokenProperties` values. E.g. to override the expiration time of tokens you can add `security.jwt.expiration=your_value` to the `application.properties` file.
 
 ## Built With
 
 * Java 11
-* [Spring Boot 2.1.5](https://start.spring.io/)
-* [Angular 10](https://angular.io/)
+* [Spring Boot 2.1.5](https://start.spring.io/), updated to Spring Boot 2.2.4 
+* [Angular 6](https://angular.io/), updated to Angular 10
 * [Bootstrap 4](https://getbootstrap.com/)
 * [Maven](https://maven.apache.org/)
 * [frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin)
