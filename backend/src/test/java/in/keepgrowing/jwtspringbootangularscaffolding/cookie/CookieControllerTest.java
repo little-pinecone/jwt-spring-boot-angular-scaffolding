@@ -1,45 +1,38 @@
 package in.keepgrowing.jwtspringbootangularscaffolding.cookie;
 
-import in.keepgrowing.jwtspringbootangularscaffolding.config.SecurityConfig;
-import in.keepgrowing.jwtspringbootangularscaffolding.security.CustomUserDetailsService;
-import in.keepgrowing.jwtspringbootangularscaffolding.security.TokenProperties;
-import in.keepgrowing.jwtspringbootangularscaffolding.user.UserService;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.Import;
-import org.springframework.http.MediaType;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.hamcrest.Matchers.is;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import java.util.Collections;
+import java.util.List;
 
-@RunWith(SpringRunner.class)
-@WebMvcTest(value = CookieController.class)
-@Import({TokenProperties.class, BCryptPasswordEncoder.class, CustomUserDetailsService.class, SecurityConfig.class})
-public class CookieControllerTest {
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 
-    @Autowired
-    private MockMvc mvc;
+@ExtendWith(MockitoExtension.class)
+class CookieControllerTest {
 
-    @MockBean
-    private UserService userService;
+    private CookieController controller;
 
-    @Test
-    @WithMockUser(roles = "USER")
-    public void getsCookies() throws Exception {
-        mvc.perform(get("/api/cookies")
-                .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.[0].flavour", is("chocolate")))
-                .andExpect(jsonPath("$.[1].flavour", is("vanilla")))
-                .andExpect(status().isOk());
+    @Mock
+    private RandomCookieJar cookieJar;
+
+    @BeforeEach
+    void setUp() {
+        controller = new CookieController(cookieJar);
     }
 
+    @Test
+    void shouldGetCookies() {
+        List<Cookie> expected = List.of(new Cookie("chocolate"), new Cookie("vanilla"));
+        when(cookieJar.getCookies())
+                .thenReturn(expected);
+
+        List<Cookie> actual = controller.getCookies();
+
+        assertEquals(expected, actual);
+    }
 }
