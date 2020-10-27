@@ -69,6 +69,12 @@
         </dependency>
 
         <dependency>
+            <groupId>dev.codesoapbox</groupId>
+            <artifactId>dummy4j</artifactId>
+            <version>0.5.0</version>
+        </dependency>
+
+        <dependency>
             <groupId>in.keepgrowing</groupId>
             <artifactId>frontend</artifactId>
             <version>${project.version}</version>

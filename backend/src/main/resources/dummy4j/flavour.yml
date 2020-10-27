@@ -1,0 +1,26 @@
+en:
+  flavour:
+    chocolate: [
+        "white chocolate", "dark chocolate", "chocolate"
+    ]
+    nutty: [
+        "hazelnut", "almond", "pecan", "coconut", "nougat"
+    ]
+    spicy: [
+        "pumpkin spice", "cinnamon", "matcha", "mint", "honey", "vanilla", "ginger", "mocha", "fudge", "maple", "caramel",
+        "toffee", "peanut butter"
+    ]
+    fruit: [
+        "lemon", "raspberry", "cranberry", "orange", "banana"
+    ]
+    single: [
+        "#{flavour.chocolate}", "#{flavour.nutty}", "#{flavour.spicy}", "#{flavour.fruit}"
+    ]
+    mixed: [
+        "#{flavour.chocolate} and #{flavour.nutty}",
+        "#{flavour.chocolate} and #{flavour.spicy}",
+        "#{flavour.chocolate} and #{flavour.fruit}",
+        "#{flavour.fruit} and #{flavour.spicy}",
+        "#{flavour.fruit} and #{flavour.nutty}",
+        "#{flavour.spicy} and #{flavour.nutty}",
+    ]
