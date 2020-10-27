@@ -94,6 +94,7 @@ Override the default `TokenProperties` values. E.g. to override the expiration t
 * [frontend-maven-plugin](https://github.com/eirslett/frontend-maven-plugin)
 * [npm 6.13.7](https://github.com/npm/cli)
 * [Node.js v12.14.1](https://nodejs.org/dist/latest-v10.x/docs/api/)
+* [Dummy4j v0.5.0](https://daniel-frak.github.io/dummy4j/)
 
 ## Screenshots
 
